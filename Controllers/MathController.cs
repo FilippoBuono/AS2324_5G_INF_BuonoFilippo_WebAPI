@@ -27,6 +27,22 @@ namespace AS2324_5G_INF_BuonoFilippo_WebAPI.Controllers
             return Json(new { output = message, status = status_result });
         }
 
+        [HttpGet("GetPotenza")]
+        public JsonResult GetPotenza(int b, int esponente)
+        {
+            string status_result = "OK";
+            string message = "Calcolata la potenza";
+            int res = b; 
+
+            for(int i = esponente; i > 1; i--) 
+            {
+                res = res * b;
+            }
+
+            return Json(new { output = res, status = status_result, message = message });
+
+        }
+
         public IActionResult Index()
         {
             return View();
