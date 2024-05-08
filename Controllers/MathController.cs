@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Eventing.Reader;
 
 namespace AS2324_5G_INF_BuonoFilippo_WebAPI.Controllers
 {
@@ -41,6 +42,23 @@ namespace AS2324_5G_INF_BuonoFilippo_WebAPI.Controllers
 
             return Json(new { output = res, status = status_result, message = message });
 
+        }
+
+        [HttpGet("GetAnnoBisestile")]
+        public JsonResult GetAnnoBisestile(int anno)
+        {
+            string status_result = "OK";
+            string message = "";
+            if((anno % 400 == 0) || (anno % 4 == 0 && anno % 100 != 0)) 
+            {
+                message = "anno bistile";
+            }
+            else
+            {
+                message = "anno non bisestile";
+            }
+
+            return Json(new { anno=anno, status = status_result, message = message });
         }
 
         public IActionResult Index()
