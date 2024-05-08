@@ -1,0 +1,6 @@
+@AS2324_5G_INF_BuonoFilippo_WebAPI_HostAddress = http://localhost:5139
+
+GET {{AS2324_5G_INF_BuonoFilippo_WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
