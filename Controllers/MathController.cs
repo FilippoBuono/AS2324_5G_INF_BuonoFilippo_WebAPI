@@ -61,6 +61,27 @@ namespace AS2324_5G_INF_BuonoFilippo_WebAPI.Controllers
             return Json(new { anno=anno, status = status_result, message = message });
         }
 
+        [HttpGet("GetIpotenusa")]
+        public JsonResult GetIpotenusa (double cateto1, double cateto2)
+        {
+            string status_result = "OK";
+            string message = "";
+            double res;
+
+            if((cateto1 == 0) || (cateto2 == 0))
+            {
+                status_result = "KO";
+                message = "Valori non calcolabili";
+                res = 0;
+            }
+            else
+            {
+                res = Math.Sqrt((cateto1*cateto1) + (cateto2*cateto2));
+                message = "Valori calcolabili";
+            }
+            return Json(new { ipotenusa = res, status = status_result, message = message });
+        }
+
         public IActionResult Index()
         {
             return View();
